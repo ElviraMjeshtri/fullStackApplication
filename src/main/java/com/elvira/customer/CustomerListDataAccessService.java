@@ -58,7 +58,7 @@ public class CustomerListDataAccessService implements CustomerDao {
     }
 
     @Override
-    public boolean existPersonWithId(Integer id) {
+    public boolean existsPersonWithId(Integer id) {
         return customers
                 .stream()
                 .noneMatch(c -> c.getId().equals(id));
