@@ -1,7 +1,6 @@
 package com.elvira.customer;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -55,7 +54,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
     }
 
     @Override
-    public boolean existsPersonWithEmail(String email) {
+    public boolean existsCustomerWithEmail(String email) {
         var sql = """
                 SELECT count(id)
                 FROM customer
@@ -66,7 +65,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
     }
 
     @Override
-    public boolean existsPersonWithId(Long id) {
+    public boolean existsCustomerWithId(Long id) {
         var sql = """
                 SELECT count(id)
                 FROM customer
@@ -130,7 +129,6 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
                     update.getId()
             );
             System.out.println("update customer email result = " + result);
-
         }
 
     }
