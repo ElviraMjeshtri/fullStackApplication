@@ -88,7 +88,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
 
     @Override
     public void updateCustomer(Customer update) {
-        if(update.getName() != null){
+        if (update.getName() != null) {
             var sql = """
                     UPDATE customer 
                     SET name = ? 
@@ -102,7 +102,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
             System.out.println("update customer name result = " + result);
 
         }
-        if(update.getAge() != null){
+        if (update.getAge() != null) {
             var sql = """
                     UPDATE customer 
                     SET age = ? 
@@ -117,7 +117,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
 
         }
 
-        if(update.getEmail() != null){
+        if (update.getEmail() != null) {
             var sql = """
                     UPDATE customer 
                     SET email = ? 

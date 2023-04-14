@@ -291,7 +291,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
     }
 
     @Test
-    void willUpdateAllPropertiesCustomer(){
+    void willUpdateAllPropertiesCustomer() {
         //Given
         String email = FAKER.internet().safeEmailAddress() + " - " + UUID.randomUUID();
         Customer customer = new Customer(
@@ -321,7 +321,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
     }
 
     @Test
-    void willNotUpdateWHenNothingToUpdate(){
+    void willNotUpdateWHenNothingToUpdate() {
         String email = FAKER.internet().safeEmailAddress() + " - " + UUID.randomUUID();
         Customer customer = new Customer(
                 FAKER.name().firstName(),

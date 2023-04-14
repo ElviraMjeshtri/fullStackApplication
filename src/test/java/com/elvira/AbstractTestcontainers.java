@@ -52,7 +52,7 @@ public abstract class AbstractTestcontainers {
         );
     }
 
-    private static DataSource getDataSource(){
+    private static DataSource getDataSource() {
         return DataSourceBuilder.create()
                 .driverClassName(postgresSQLContainer.getDriverClassName())
                 .url(postgresSQLContainer.getJdbcUrl())
@@ -61,7 +61,7 @@ public abstract class AbstractTestcontainers {
                 .build();
     }
 
-    protected static JdbcTemplate getJdbcTemplate(){
+    protected static JdbcTemplate getJdbcTemplate() {
         return new JdbcTemplate(getDataSource());
     }
 
