@@ -20,7 +20,6 @@ class CustomerRepositoryTest extends AbstractTestcontainers {
     private CustomerRepository underTest;
 
     @Autowired
-
     private ApplicationContext applicationContext;
 
     @BeforeEach
