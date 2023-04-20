@@ -1,4 +1,4 @@
-package com.elvira.customer;
+package com.elacode.customer;
 
 import jakarta.persistence.*;
 

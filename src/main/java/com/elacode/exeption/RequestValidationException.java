@@ -1,4 +1,4 @@
-package com.elvira.exeption;
+package com.elacode.exeption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

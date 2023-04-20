@@ -1,4 +1,4 @@
-package com.elvira;
+package com.elacode;
 
 import com.github.javafaker.Faker;
 import org.flywaydb.core.Flyway;
@@ -32,8 +32,8 @@ public abstract class AbstractTestcontainers {
     protected static final PostgreSQLContainer<?> postgresSQLContainer =
             new PostgreSQLContainer<>("postgres:latest")
                     .withDatabaseName("elvira-dao-unit-test")
-                    .withUsername("amigoscode")
-                    .withPassword("password");
+                    .withUsername("elvira")
+                    .withPassword("elvira");
 
 
     @DynamicPropertySource

@@ -1,4 +1,4 @@
-package com.elvira.customer;
+package com.elacode.customer;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

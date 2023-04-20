@@ -1,8 +1,8 @@
-package com.elvira.customer;
+package com.elacode.customer;
 
-import com.elvira.exeption.DuplicateResourceException;
-import com.elvira.exeption.RequestValidationException;
-import com.elvira.exeption.ResourceNotFoundException;
+import com.elacode.exeption.DuplicateResourceException;
+import com.elacode.exeption.RequestValidationException;
+import com.elacode.exeption.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

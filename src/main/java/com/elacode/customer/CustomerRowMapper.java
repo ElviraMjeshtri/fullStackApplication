@@ -1,4 +1,4 @@
-package com.elvira.customer;
+package com.elacode.customer;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,8 @@
-package com.elvira.journey;
+package com.elacode.journey;
 
-import com.elvira.customer.Customer;
-import com.elvira.customer.CustomerRegistrationRequest;
-import com.elvira.customer.CustomerUpdateRequest;
+import com.elacode.customer.Customer;
+import com.elacode.customer.CustomerRegistrationRequest;
+import com.elacode.customer.CustomerUpdateRequest;
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
 import org.junit.jupiter.api.Test;

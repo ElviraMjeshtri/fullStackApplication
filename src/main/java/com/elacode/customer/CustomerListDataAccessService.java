@@ -1,6 +1,5 @@
-package com.elvira.customer;
+package com.elacode.customer;
 
-import com.elvira.exeption.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

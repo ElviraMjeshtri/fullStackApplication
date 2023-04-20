@@ -1,6 +1,6 @@
-package com.elvira.customer;
+package com.elacode.customer;
 
-import com.elvira.AbstractTestcontainers;
+import com.elacode.AbstractTestcontainers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

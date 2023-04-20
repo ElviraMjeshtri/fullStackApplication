@@ -1,7 +1,7 @@
-package com.elvira;
+package com.elacode;
 
-import com.elvira.customer.Customer;
-import com.elvira.customer.CustomerRepository;
+import com.elacode.customer.Customer;
+import com.elacode.customer.CustomerRepository;
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
 import org.springframework.boot.CommandLineRunner;
@@ -9,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.List;
 import java.util.Random;
 
 @SpringBootApplication
