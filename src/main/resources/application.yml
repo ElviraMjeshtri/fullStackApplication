@@ -2,11 +2,10 @@ server:
   port: 8082
   error:
     include-message: always
-
 spring:
   datasource:
-    username: elvira
-    password: elvira
+    username: elacode
+    password: elacodepassword
     url: jdbc:postgresql://localhost:5432/customer
   jpa:
     hibernate:
@@ -18,8 +17,9 @@ spring:
     show-sql: true
   flyway:
     enabled: true
-    user: elvira
-    password: elvira
+    user: elacode
+    password: elacodepassword
     url: jdbc:postgresql://localhost:5432/customer
+
   main:
     web-application-type: servlet
