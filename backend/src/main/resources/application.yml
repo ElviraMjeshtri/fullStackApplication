@@ -15,11 +15,5 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
-  flyway:
-    enabled: true
-    user: elacode
-    password: elacodepassword
-    url: jdbc:postgresql://localhost:5432/customer
-
   main:
     web-application-type: servlet
