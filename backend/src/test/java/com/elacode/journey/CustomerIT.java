@@ -36,7 +36,7 @@ public class CustomerIT {
         Name fakerName = faker.name();
 
         String name = fakerName.fullName();
-        String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@amigoscode.com";
+        String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@elacode.com";
         int age = RANDOM.nextInt(1, 100);
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
@@ -101,7 +101,7 @@ public class CustomerIT {
         Name fakerName = faker.name();
 
         String name = fakerName.fullName();
-        String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@amigoscode.com";
+        String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@elacode.com";
         int age = RANDOM.nextInt(1, 100);
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
@@ -162,7 +162,7 @@ public class CustomerIT {
         Name fakerName = faker.name();
 
         String name = fakerName.fullName();
-        String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@amigoscode.com";
+        String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@elacode.com";
         int age = RANDOM.nextInt(1, 100);
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
