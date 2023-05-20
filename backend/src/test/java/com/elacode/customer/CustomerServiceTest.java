@@ -201,7 +201,7 @@ class CustomerServiceTest {
         );
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
-        String newEmail = "alexandro@amigoscode.com";
+        String newEmail = "alexandro@elacode.com";
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(
                 null, newEmail, null);
@@ -259,7 +259,7 @@ class CustomerServiceTest {
         );
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
-        String newEmail = "alexandro@amigoscode.com";
+        String newEmail = "alexandro@elacode.com";
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(
                 null, newEmail, null);
