@@ -2,6 +2,7 @@ package com.elacode;
 
 import com.elacode.customer.Customer;
 import com.elacode.customer.CustomerRepository;
+import com.elacode.customer.Gender;
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
 import org.springframework.boot.CommandLineRunner;
@@ -25,11 +26,13 @@ public class Main {
             Name name = faker.name();
             String firstName = name.firstName();
             String lastName = name.lastName();
+            int age =  random.nextInt(16, 99);
+            Gender gender =  age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
             Customer customer = new Customer(
                     firstName +  " " + lastName,
                     firstName.toLowerCase() + "." + lastName.toLowerCase() + "@elacode.com",
-                    random.nextInt(16, 99)
-            );
+                    age,
+                    gender);
             customerRepository.save(customer);
 
         };
