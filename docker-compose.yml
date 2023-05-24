@@ -16,6 +16,7 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -32,17 +33,31 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+
   elacode-api:
     container_name: elacode-api
     image: elviramjeshtri/elacode-api
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/customer
     ports:
-      - 8085:8085
+      - 8085:8082
     networks:
       - postgres
     depends_on:
       - db
+    restart: unless-stopped
+
+  elacode-react:
+    container_name: elacode-react
+    image: elviramjeshtri/elacode-react
+    build:
+      context: frontend/react
+      args:
+        api_base_url: http://localhost:8085
+    ports:
+      - "3000:5173"
+    depends_on:
+      - elacode-api
     restart: unless-stopped
 
 networks:
