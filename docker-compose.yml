@@ -37,9 +37,6 @@ services:
     image: elviramjeshtri/elacode-api
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/customer
-      SPRING_DATASOURCE_USERNAME: elacode
-      SPRING_DATASOURCE_PASSWORD: elacodepassword
-      SPRING_DATASOURCE_DB: customer
     ports:
       - 8085:8085
     networks:
