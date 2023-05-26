@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WorkfllowController {
-    record PingPong(String result){}
+    record PingPong(
+            String result
+    ){}
 
     @GetMapping("/ping")
     public WorkfllowController.PingPong getPingPong(){
