@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PingPongController {
+public class WorkfllowController {
     record PingPong(String result){}
 
     @GetMapping("/ping")
-    public PingPong getPingPong(){
-        return new PingPong("Pong");
+    public WorkfllowController.PingPong getPingPong(){
+        return new WorkfllowController.PingPong("Pong");
     }
 }

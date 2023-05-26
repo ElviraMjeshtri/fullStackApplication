@@ -21,7 +21,7 @@
         <java.version>17</java.version>
         <docker.username>elviramjeshtri</docker.username>
         <docker.image.name>elacode-api</docker.image.name>
-        <docker.tag/>
+        <docker.image.tag/>
     </properties>
 
     <dependencies>
@@ -179,7 +179,7 @@
                         </platforms>
                     </from>
                     <to>
-                        <image>docker.io/${docker.username}/${docker.image.name}:${docker.tag}</image>
+                        <image>docker.io/${docker.username}/${docker.image.name}:${docker.image.tag}</image>
                         <tags>
                             <tag>latest</tag>
                         </tags>
