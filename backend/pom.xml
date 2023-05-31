@@ -22,6 +22,7 @@
         <docker.username>elviramjeshtri</docker.username>
         <docker.image.name>elacode-api</docker.image.name>
         <docker.image.tag/>
+        <json.webtoken.version>0.11.5</json.webtoken.version>
     </properties>
 
     <dependencies>
@@ -83,6 +84,29 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${json.webtoken.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${json.webtoken.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${json.webtoken.version}</version>
         </dependency>
         <!--END of Testing dependencies-->
     </dependencies>
