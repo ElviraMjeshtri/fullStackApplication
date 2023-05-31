@@ -5,7 +5,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.MalformedParameterizedTypeException;
 import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
@@ -34,8 +33,8 @@ public class JWTUtil {
             Map<String, Object> claims) {
             // return the created token
         return Jwts.builder()
-                .setSubject(subject)
                 .setClaims(claims)
+                .setSubject(subject)
                 .setIssuer("https://elacode.com")
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(
