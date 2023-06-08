@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
@@ -26,6 +27,8 @@ public class CustomerIT {
 
     @Autowired
     private WebTestClient webTestClient;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     private static final Random RANDOM = new Random();
     private static final String CUSTOMER_URI = "/api/v1/customers";
@@ -40,9 +43,10 @@ public class CustomerIT {
         String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@elacode.com";
         int age = RANDOM.nextInt(1, 100);
         Gender gender =  age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
+        String password = passwordEncoder.encode("password");
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, gender
+                name, email, password, age, gender
         );
         // send a post request
         webTestClient.post()
@@ -68,7 +72,7 @@ public class CustomerIT {
 
         // make sure that customer is present
         Customer expectedCustomer = new Customer(
-                name, email, age, gender
+                name, email, "password", age, gender
         );
 
         assertThat(allCustomers)
@@ -106,9 +110,10 @@ public class CustomerIT {
         String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@elacode.com";
         int age = RANDOM.nextInt(1, 100);
         Gender gender =  age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
+        String password = passwordEncoder.encode("password");
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, gender
+                name, email, password, age, gender
         );
 
         // send a post request
@@ -168,9 +173,10 @@ public class CustomerIT {
         String email = fakerName.lastName() + "-" + UUID.randomUUID() + "@elacode.com";
         int age = RANDOM.nextInt(1, 100);
         Gender gender =  age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
+        String password = passwordEncoder.encode("password");
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, gender
+                name, email, password, age, gender
         );
 
         // send a post request
@@ -231,7 +237,7 @@ public class CustomerIT {
                 .getResponseBody();
 
         Customer expected = new Customer(
-                id, newName, email, age,
+                id, newName, email, "password", age,
                 gender);
 
         assertThat(updatedCustomer).isEqualTo(expected);

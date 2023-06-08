@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
@@ -22,10 +23,13 @@ class CustomerServiceTest {
     @Mock
     private CustomerDao customerDao;
     private CustomerService underTest;
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
 
     @BeforeEach
     void setUp() {
-        underTest = new CustomerService(customerDao);
+        underTest = new CustomerService(customerDao, passwordEncoder);
     }
 
     @Test
@@ -43,8 +47,8 @@ class CustomerServiceTest {
         Customer customer = new Customer(
                 id,
                 "elvira",
-                "elviramjeshtri#yahoo.com",
-                20,
+                "elviramjeshtri@yahoo.com",
+                "password", 20,
                 Gender.FEMALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -73,13 +77,17 @@ class CustomerServiceTest {
 
         //Given
         String email = "elviramjeshtri@yahoo.com";
+        String password = passwordEncoder.encode("password");
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(false);
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
                 "elvira",
                 email,
+                "password",
                 19,
                 Gender.FEMALE
         );
+        String passwordHash = "42vdffs";
+        when(passwordEncoder.encode(request.password())).thenReturn(passwordHash);
         //When
         underTest.saveCustomer(request);
         //Then
@@ -91,17 +99,19 @@ class CustomerServiceTest {
         assertThat(cupCustomer.getName()).isEqualTo(request.name());
         assertThat(cupCustomer.getAge()).isEqualTo(request.age());
         assertThat(cupCustomer.getGender()).isEqualTo(request.gender());
+        assertThat(cupCustomer.getPassword()).isEqualTo(passwordHash);
     }
 
     @Test
     void willThrowWhenEmailExistsWhileAddingACustomer() {
         //Given
         String email = "elviramjeshtri@yahoo.com";
+        String password = passwordEncoder.encode("password");
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(true);
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
                 "elvira",
                 email,
-                19,
+                password, 19,
                 Gender.FEMALE
         );
         //When
@@ -140,9 +150,11 @@ class CustomerServiceTest {
     void canUpdateAllCustomersProperties() {
         //given
         Long id = 1L;
+        String password = passwordEncoder.encode("password");
         Customer customer =  new Customer(
                 "elvira",
                 "elviramjeshtri@yahoo.com",
+                password,
                 19,
                 Gender.FEMALE
         );
@@ -175,8 +187,9 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerName() {
         // Given
         Long id = 10L;
+        String password = passwordEncoder.encode("password");
         Customer customer = new Customer(
-                id, "Alex", "alex@gmail.com", 20,
+                id, "Alex", "alex@gmail.com", password, 20,
                 Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -203,8 +216,9 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerEmail() {
         // Given
         Long id = 10L;
+        String password = passwordEncoder.encode("password");
         Customer customer = new Customer(
-                id, "Alex", "alex@gmail.com",20,
+                id, "Alex", "alex@gmail.com", password, 20,
                 Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -235,8 +249,9 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerAge() {
         // Given
         Long id = 10L;
+        String password = passwordEncoder.encode("password");
         Customer customer = new Customer(
-                id, "Alex", "alex@gmail.com",33,
+                id, "Alex", "alex@gmail.com", password, 33,
                 Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -263,8 +278,9 @@ class CustomerServiceTest {
     void willThrowWhenTryingToUpdateCustomerEmailWhenAlreadyTaken() {
         // Given
         Long id = 10L;
+        String password = passwordEncoder.encode("password");
         Customer customer = new Customer(
-                id, "Alex", "alex@gmail.com",33,
+                id, "Alex", "alex@gmail.com", password, 33,
                 Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -288,8 +304,9 @@ class CustomerServiceTest {
     void willThrowWhenCustomerUpdateHasNoChanges() {
         // Given
         Long id = 10L;
+        String password = passwordEncoder.encode("password");
         Customer customer = new Customer(
-                id, "Alex", "alex@gmail.com", 33,
+                id, "Alex", "alex@gmail.com", password, 33,
                 Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
