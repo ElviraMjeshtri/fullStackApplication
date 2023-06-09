@@ -24,6 +24,8 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
+
+
     @Bean
     public AuthenticationProvider authenticationProvider(
             UserDetailsService userDetailsService,
