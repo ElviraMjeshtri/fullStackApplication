@@ -15,7 +15,7 @@
     },
     {
       "name": "elacode-api",
-      "image": "elviramjeshtri/elacode-api:29.05.2023.13.01.00",
+      "image": "elviramjeshtri/elacode-api:22.06.2023.10.51.49",
       "essential": true,
       "memory": 512,
       "portMappings": [
