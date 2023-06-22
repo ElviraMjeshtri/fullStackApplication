@@ -25,11 +25,12 @@ class CustomerServiceTest {
     private CustomerService underTest;
     @Mock
     private PasswordEncoder passwordEncoder;
+    private final CustomerDTOMapper customerDTOMapper = new CustomerDTOMapper();
 
 
     @BeforeEach
     void setUp() {
-        underTest = new CustomerService(customerDao, passwordEncoder);
+        underTest = new CustomerService(customerDao, customerDTOMapper, passwordEncoder);
     }
 
     @Test
@@ -52,11 +53,13 @@ class CustomerServiceTest {
                 Gender.FEMALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
+        CustomerDTO expected = customerDTOMapper.apply(customer);
+
         //When
-        Customer actual = underTest.getCustomer(id);
+        CustomerDTO actual = underTest.getCustomer(id);
 
         //Then
-        assertThat(actual).isEqualTo(customer);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -151,7 +154,7 @@ class CustomerServiceTest {
         //given
         Long id = 1L;
         String password = passwordEncoder.encode("password");
-        Customer customer =  new Customer(
+        Customer customer = new Customer(
                 "elvira",
                 "elviramjeshtri@yahoo.com",
                 password,
@@ -159,7 +162,7 @@ class CustomerServiceTest {
                 Gender.FEMALE
         );
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
-        String newEmail =  "test@test.al";
+        String newEmail = "test@test.al";
         when(customerDao.existsCustomerWithEmail(newEmail)).thenReturn(false);
 
         CustomerUpdateRequest customerUpdateRequest = new CustomerUpdateRequest(
