@@ -33,6 +33,7 @@ public class SecurityFilterChainConfig {
                         authorizeRequests
                                 .requestMatchers(HttpMethod.POST, "/api/v1/customers").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)

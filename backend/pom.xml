@@ -114,6 +114,11 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>${json.webtoken.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!--END of Testing dependencies-->
     </dependencies>
 

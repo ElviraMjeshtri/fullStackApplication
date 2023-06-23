@@ -19,7 +19,7 @@ spring:
   datasource:
     username: elacode
     password: elacodepassword
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://awseb-e-hwgrikfd25-stack-awsebrdsdatabase-jacyjlcfigfe.ciymfer2wzfz.eu-north-1.rds.amazonaws.com:5432/ebdb
   jpa:
     hibernate:
       ddl-auto: validate
