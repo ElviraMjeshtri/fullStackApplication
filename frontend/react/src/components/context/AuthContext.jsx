@@ -10,7 +10,8 @@ import jwtDecode from "jwt-decode";
 const AuthContext = createContext({})
 const AuthProvider = ({children}) => {
     const [customer, setCustomer] = useState(null);
-    useEffect( ()=>{
+
+    const setCustomerFromToken =  () => {
         let jwtToken = localStorage.getItem("access_token");
         if (jwtToken){
             jwtToken = jwtDecode(jwtToken);
@@ -19,7 +20,13 @@ const AuthProvider = ({children}) => {
                 roles: jwtToken.scopes
             });
         }
+    }
+
+    useEffect( ()=>{
+        setCustomerFromToken()
     }, [])
+
+
     const login = async (usernameAndPassword) => {
         return new Promise((resolve, reject) => {
             performLogin(usernameAndPassword).then(res => {
@@ -62,7 +69,8 @@ const AuthProvider = ({children}) => {
                 customer,
                 login,
                 logOut,
-                isCustomerAuthenticated
+                isCustomerAuthenticated,
+                setCustomerFromToken
             }
         }>
             {children}
