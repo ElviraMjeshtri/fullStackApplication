@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "elacode-react",
-      "image": "elviramjeshtri/elacode-react:latest",
+      "image": "elviramjeshtri/elacode-react:23.06.2023.09.45.50",
       "essential": true,
       "memory": 256,
       "portMappings": [
