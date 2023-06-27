@@ -10,6 +10,7 @@ on:
 
 jobs:
   deploy:
+    if: false #this disables the deploy because is going to be managed by AWS Amplify
     runs-on: ubuntu-latest
     defaults:
       run:
